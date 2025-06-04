@@ -22,8 +22,8 @@ export default function Header() {
     return (
         <nav className={styles.nav}>
             <div className={styles.title}>
-                <Popcorn className={styles.icon} />
-                <span>Movie Explorer</span>
+                <img src="/tv-icon.svg" alt="Logo" className={styles.icon} />
+                <span>TV Show Explorer</span>
             </div>
 
             <div className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
@@ -40,13 +40,33 @@ export default function Header() {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/movies" onClick={handleLinkClick}>
-                        Movies
+                    <Link to="/all" onClick={handleLinkClick}>
+                        All Shows
                     </Link>
                 </li>
                 <li>
-                    <Link to="/soon" onClick={handleLinkClick}>
-                        Soon
+                    <Link to="/series" onClick={handleLinkClick}>
+                        TV Series
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/reality" onClick={handleLinkClick}>
+                        Reality Shows
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/animation" onClick={handleLinkClick}>
+                        Animation
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/documentary" onClick={handleLinkClick}>
+                        Documentaries
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/talkshow" onClick={handleLinkClick}>
+                        Talk Shows
                     </Link>
                 </li>
             </ul>

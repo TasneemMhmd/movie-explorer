@@ -1,7 +1,7 @@
 .slider {
     max-width: 100%;
-    /* margin: 0 auto; */
     padding: 20px;
+    margin-bottom: 40px;
 }
 
 .slide {
@@ -9,7 +9,6 @@
 }
 
 .card {
-    /* background: rgba(14, 13, 13, 0.363); */
     border-radius: 12px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -29,11 +28,56 @@
     width: 300px;
 }
 
+.imageContainer {
+    position: relative;
+    cursor: pointer;
+}
+
 .image {
     width: 100%;
     height: 400px;
     object-fit: cover;
     border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.image:hover {
+    transform: scale(1.05);
+}
+
+.imageOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+.imageContainer:hover .imageOverlay {
+    opacity: 1;
+}
+
+.viewDetailsBtn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.viewDetailsBtn:hover {
+    background: var(--primary-color);
+    transform: scale(1.05);
 }
 
 .rating {
@@ -45,6 +89,7 @@
     padding: 5px 8px;
     border-radius: 15px;
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 .contentSection {
@@ -69,7 +114,7 @@
 }
 
 .genre {
-    background: #3b82f6;
+    background: var(--accent-color);
     color: white;
     padding: 4px 12px;
     border-radius: 20px;
@@ -89,7 +134,7 @@
 }
 
 .summary {
-    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .summaryLabel {
@@ -109,6 +154,30 @@
     overflow: hidden;
 }
 
+.actionButtons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.viewBtn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.viewBtn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
 .slider :global(.slick-dots) {
     bottom: -40px;
 }
@@ -116,6 +185,10 @@
 .slider :global(.slick-dots li button:before) {
     color: var(--secondary-color);
     font-size: 10px;
+}
+
+.slider :global(.slick-dots li.slick-active button:before) {
+    color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {
@@ -149,5 +222,36 @@
     .title {
         font-size: 1.4rem;
         text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .slider {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 12px;
+    }
+
+    .imageSection {
+        max-width: 200px;
+    }
+
+    .image {
+        height: 250px;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    .actionButtons {
+        justify-content: center;
+    }
+
+    .viewBtn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }

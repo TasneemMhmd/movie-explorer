@@ -1,79 +1,108 @@
 .nav {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: var(--primary-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
 }
 
 .title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .icon {
-  background-color: var(--secondary-color);
-  padding: 5px 10px;
-  border-radius: 5px;
+    border-radius: 5px;
 }
 
 .menu {
-  display: flex;
-  gap: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .menu li a {
-  color: white;
-  font-weight: 500;
-  transition: 0.3s ease;
-  padding: 5px 10px;
-  border-radius: 5px;
+    color: white;
+    font-weight: 500;
+    transition: 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: relative;
 }
 
 .menu li a:hover {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+}
+
+.menu li a:active,
+.menu li a:focus {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    outline: none;
+}
+
+.menu li a.active {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.menu li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    border-radius: 1px;
 }
 
 .hamburger {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: white;
-  user-select: none;
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+    user-select: none;
 }
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
+    .hamburger {
+        display: block;
+    }
 
-  .menu {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background-color: var(--primary-color);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: var(--primary-color);
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        opacity: 0;
+        transform: scale(0.95);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
 
-  .open {
-    display: flex;
-    opacity: 1;
-    transform: scale(1);
-  }
+    .open {
+        display: flex;
+        opacity: 1;
+        transform: scale(1);
+    }
+    
+    .menu li a.active::after {
+        display: none; 
+    }
 }

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "react-slick";
-import styles from "./MovieSlider.module.css";
+import styles from "./slider.module.css";
 
-export default function MovieSlider() {
+export default function ShowsSlider() {
     const [movies, setMovies] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch("https://api.tvmaze.com/shows")
@@ -28,6 +30,10 @@ export default function MovieSlider() {
         return html.replace(/<[^>]*>/g, '');
     };
 
+    const handleShowClick = (showId) => {
+        navigate(`/show/${showId}`);
+    };
+
     return (
         <div className={styles.slider}>
             <Slider {...settings}>
@@ -36,11 +42,21 @@ export default function MovieSlider() {
                         <div className={styles.card}>
                             <div className={styles.cardContent}>
                                 <div className={styles.imageSection}>
-                                    <img
-                                        src={movie.image?.medium}
-                                        alt={movie.name}
-                                        className={styles.image}
-                                    />
+                                    <div 
+                                        className={styles.imageContainer}
+                                        onClick={() => handleShowClick(movie.id)}
+                                    >
+                                        <img
+                                            src={movie.image?.medium}
+                                            alt={movie.name}
+                                            className={styles.image}
+                                        />
+                                        <div className={styles.imageOverlay}>
+                                            <button className={styles.viewDetailsBtn}>
+                                                View Details
+                                            </button>
+                                        </div>
+                                    </div>
                                     {movie.rating?.average && (
                                         <div className={styles.rating}>
                                             ⭐ {movie.rating.average}
@@ -87,6 +103,15 @@ export default function MovieSlider() {
                                             </p>
                                         </div>
                                     )}
+
+                                    <div className={styles.actionButtons}>
+                                        <button 
+                                            className={styles.viewBtn}
+                                            onClick={() => handleShowClick(movie.id)}
+                                        >
+                                            View Now
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
