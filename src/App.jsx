@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Header from "./components/header/Header";
 import MoviesList from "./components/moviesList/MoviesList";
+import MovieDetails from "./components/movieDetails/MovieDetails";
 import Home from "./components/home/Home";
 import Soon from "./components/soon/Soon";
 
@@ -14,9 +15,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/movies" element={<MoviesList />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/soon" element={<Soon />} />
       </Routes>
-      <MoviesList />
     </>
   );
 }
